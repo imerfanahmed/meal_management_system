@@ -88,7 +88,8 @@
                                 <h4 class="card-title mb-1">Adventure starts here 🚀</h4>
                                 <p class="card-text mb-2">Make your app management easy and fun!</p>
 
-                                <form class="auth-register-form mt-2" action="index.html" method="POST">
+                                <form class="auth-register-form mt-2" action="{{url('register')}}" method="POST">
+                                    @csrf
                                     <div class="form-group">
                                         <label for="register-username" class="form-label">Username</label>
                                         <input type="text" class="form-control" id="register-username" name="register-username" placeholder="johndoe" aria-describedby="register-username" tabindex="1" autofocus />
@@ -116,12 +117,12 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary btn-block" tabindex="5">Sign up</button>
+                                    <button type="submit" class="btn btn-primary btn-block" tabindex="5">Sign up</button>
                                 </form>
 
                                 <p class="text-center mt-2">
                                     <span>Already have an account?</span>
-                                    <a href="page-auth-login-v1.html">
+                                    <a href="{{route('login')}}">
                                         <span>Sign in instead</span>
                                     </a>
                                 </p>

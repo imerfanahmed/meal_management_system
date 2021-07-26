@@ -17,28 +17,41 @@ class AuthConroller extends Controller
     }
     //create login controller
     public function login_post(Request $request){
+
         //login user
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-        //get user
-        $user = User::where('email', $request->email)->firstOrFail();
-        //check if user exists
-        if($user){
-            //check if password matches
-            if(Hash::check($request->password, $user->password)){
-                //login user
-               Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-                //redirect to dashboard
-                return redirect('/dashboard');
-            }else{
-                //error message
-                return redirect('/login')->withErrors(['password' => 'Wrong password']);
-            }
+       // dd($request->all());
+        $credentials = $request->only('email', 'password');
+        if(Auth::attempt($credentials)){
+            return redirect()->intended('/dashboard');
         }
-        else{
-            return redirect('/login')->withErrors(['email' => 'Wrong email']);
-        }
+        return redirect()->back()->withInput()->withErrors(['email' => 'Email or password is incorrect']);
     }
+
+    //create register controller
+    public function register(Request $request){
+        //create register view
+        return view('register');
+    }
+    //create register controller
+    public function register_post(Request $request){
+        //create register user
+        $this->validate($request,[
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ]);
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->intended('/login');
+    }
+
+    //create logout controller
+    public function logout(){
+        Auth::logout();
+        return redirect('login');
+    }
+
 }
