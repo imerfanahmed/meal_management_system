@@ -72,7 +72,7 @@
     <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
     <!-- END: Page JS-->
 
-    {{-- <script>
+    <script>
         $(window).on('load', function() {
             if (feather) {
                 feather.replace({
@@ -81,5 +81,5 @@
                 });
             }
         })
-    </script> --}}
+    </script>
 </body>

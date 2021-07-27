@@ -15,15 +15,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard')->with('title', 'Dashboard');
 })->middleware('auth');
 
 
-Route::get('/login',[AuthConroller::class,'login'])->name('login');
-Route::post('/login',[AuthConroller::class,'login_post']);
+Route::get('/login',[AuthConroller::class,'login'])->name('login')->middleware('guest');
+Route::post('/login',[AuthConroller::class,'login_post'])->middleware('guest');
 
-Route::get('/logout',[AuthConroller::class,'logout'])->name('logout');
+Route::get('/logout',[AuthConroller::class,'logout'])->name('logout')->middleware('auth');
 
-Route::get('/register',[AuthConroller::class,'register'])->name('register');
-Route::post('/register',[AuthConroller::class,'register_post']);
+Route::get('/register',[AuthConroller::class,'register'])->name('register')->middleware('guest');
+Route::post('/register',[AuthConroller::class,'register_post'])->middleware('guest');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests;
+use Error;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,9 +24,9 @@ class AuthConroller extends Controller
        // dd($request->all());
         $credentials = $request->only('email', 'password');
         if(Auth::attempt($credentials)){
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         }
-        return redirect()->back()->withInput()->withErrors(['email' => 'Email or password is incorrect']);
+        return redirect()->back()->withInput()->withErrors(['error' => 'Email or password is incorrect']);
     }
 
     //create register controller
@@ -35,17 +37,26 @@ class AuthConroller extends Controller
     //create register controller
     public function register_post(Request $request){
         //create register user
-        $this->validate($request,[
-            'name' => 'required|max:255',
+        $info = $request->validateWithBag('error',[
+            'username' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
         ]);
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return redirect()->intended('/login');
+
+        if($info){
+            $user = new User();
+            $user->name = $info['username'];
+            $user->email = $info['email'];
+            $user->password = Hash::make($info['password']);
+            $user->save();
+
+            Auth::attempt(['email' => $info['email'], 'password' => $info['password']]);
+            return redirect('/');
+
+        }
+        return redirect()->back()->withInput();
+
+
     }
 
     //create logout controller
