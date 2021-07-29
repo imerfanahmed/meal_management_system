@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Auth;
 class AuthConroller extends Controller
 {
     //create login controller
-    public function login(Request $request){
+    public function login(){
         //create login view
-        return view('login');
+        return view('auth.login');
     }
     //create login controller
     public function login_post(Request $request){
@@ -30,9 +30,9 @@ class AuthConroller extends Controller
     }
 
     //create register controller
-    public function register(Request $request){
+    public function register(){
         //create register view
-        return view('register');
+        return view('auth.register');
     }
     //create register controller
     public function register_post(Request $request){
