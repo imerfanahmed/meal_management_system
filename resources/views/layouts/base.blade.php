@@ -181,70 +181,25 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a class="d-flex align-items-center" href="index.html"><i
+            <li class=" nav-item {{request()->is('/') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{url('/')}}"><i
                         data-feather="home"></i><span class="menu-title text-truncate"
-                        data-i18n="Dashboards">Dashboards</span><span
-                        class="badge badge-light-warning badge-pill ml-auto mr-1">2</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="Analytics">Analytics</span></a>
-                    </li>
-                    <li class="active"><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="eCommerce">eCommerce</span></a>
-                    </li>
-                </ul>
+                        data-i18n="Dashboards">Dashboards</span></a>
+
             </li>
-            <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
-                    data-feather="more-horizontal"></i>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span
-                        class="menu-title text-truncate" data-i18n="Invoice">Invoice</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="app-invoice-list.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="List">List</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="Preview">Preview</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="app-invoice-edit.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="Edit">Edit</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="app-invoice-add.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="Add">Add</span></a>
-                    </li>
-                </ul>
+            <li class=" nav-item {{request()->is('members') ? 'active' : ''}}"><a class="d-flex align-items-center" href="{{url('/members')}}"><i
+                        data-feather="home"></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">Members</span></a>
+
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span
-                        class="menu-title text-truncate" data-i18n="Invoice">Invoice</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="app-invoice-list.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="List">List</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="Preview">Preview</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="app-invoice-edit.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="Edit">Edit</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="app-invoice-add.html"><i
-                                data-feather="circle"></i><span class="menu-item text-truncate"
-                                data-i18n="Add">Add</span></a>
-                    </li>
-                </ul>
-            </li>
+
         </ul>
     </div>
 </div>
 <!-- END: Main Menu-->
-@yield('content')
+<div class="app-content content ">
+    @yield('content')
+</div>
+
 
 <div class="sidenav-overlay"></div>
 <div class="drag-target"></div>

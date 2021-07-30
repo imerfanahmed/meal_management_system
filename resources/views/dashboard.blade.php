@@ -4,7 +4,6 @@
 
 
     <!-- BEGIN: Content-->
-    <div class="app-content content ">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
@@ -741,7 +740,6 @@
 
             </div>
         </div>
-    </div>
     <!-- END: Content-->
 
     <div class="sidenav-overlay"></div>

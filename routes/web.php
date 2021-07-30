@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthConroller;
+use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,3 +28,6 @@ Route::get('/logout',[AuthConroller::class,'logout'])->name('logout')->middlewar
 
 Route::get('/register',[AuthConroller::class,'register'])->name('register')->middleware('guest');
 Route::post('/register',[AuthConroller::class,'register_post'])->middleware('guest');
+
+Route::get('members',[MemberController::class,'index'])->name('members')->middleware('auth');
+Route::post('add_members',[MemberController::class,'addMember']);
