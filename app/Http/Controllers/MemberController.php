@@ -15,12 +15,13 @@ class MemberController extends Controller
     }
     //controller for adding members using ajax
         public function addMember(Request $request){
-            dd($request->all());
+
         $member = new members();
-        $member->name = $request->input('name');
-        $member->email = $request->input('email');
-        $member->phone_number = $request->input('phone');
+        $member->name = $request['name'];
+        $member->email = $request['email'];
+        $member->phone_number = $request['phone'];
         $member->save();
-        return response()->json(['status' => 'ok']);
+        return response()->json(['status' => 'ok', 'message' => 'Member added successfully', 'data' => $member]);
     }
+
 }

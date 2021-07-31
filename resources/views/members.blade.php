@@ -3,22 +3,22 @@
 @section('content')
 
         <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMmember">
+    Add Member
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="addMmember" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Add Member</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          {{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
+          </button> --}}
         </div>
         <div class="modal-body">
-            <form>
+            <form method="POST" action="{{ url('add_members') }}">
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
@@ -32,6 +32,7 @@
                   <label for="exampleInputPassword1">Email Address</label>
                   <input type="email" class="form-control" id="email" placeholder="erfan@example.com">
                 </div>
+                {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
               </form>
         </div>
         <div class="modal-footer">
@@ -41,4 +42,13 @@
       </div>
     </div>
   </div>
+
+  <div class="card text-left">
+    <div class="card-body">
+      <h4 class="card-title">Member List</h4>
+      @include('members_list')
+    </div>
+  </div>
+
 @endsection
+
