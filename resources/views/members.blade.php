@@ -1,8 +1,9 @@
-@extends('layouts.base')
+@extends('layouts.master')
 
-@section('content')
+@section('body')
 
         <!-- Button trigger modal -->
+        <div class="app-content content ">
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addMmember">
     Add Member
   </button>
@@ -18,7 +19,7 @@
           </button> --}}
         </div>
         <div class="modal-body">
-            <form method="POST" action="{{ url('add_members') }}">
+            <form>
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name</label>
@@ -33,11 +34,11 @@
                   <input type="email" class="form-control" id="email" placeholder="erfan@example.com">
                 </div>
                 {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button onclick="addMember()" type="submit" class="btn btn-primary">Save changes</button>
+                </div>
               </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button onclick="addMember()" type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -50,5 +51,9 @@
     </div>
   </div>
 
-@endsection
+        </div>
+  @endsection
 
+@section('scripts')
+
+@endsection

@@ -1,9 +1,7 @@
-@extends('layouts.base')
+@extends('layouts.master')
 
-    @section('content')
-
-
-    <!-- BEGIN: Content-->
+@section('body')
+    <div class="app-content content ">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
@@ -740,10 +738,25 @@
 
             </div>
         </div>
-    <!-- END: Content-->
 
-    <div class="sidenav-overlay"></div>
-    <div class="drag-target"></div>
+    </div>
 
-
+@endsection
+@section('script')
+    <!-- BEGIN: Page JS-->
+    <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
+    <!-- END: Page JS-->
+<script>
+    var user = {!! json_encode((array)auth()->user()->name) !!};
+    setTimeout(function () {
+    toastr['success'](
+      'Start to explore now',
+      'Login Successful'+ ' '+ user,
+      {
+        closeButton: true,
+        tapToDismiss: false,
+      }
+    );
+  }, 2000);
+</script>
 @endsection

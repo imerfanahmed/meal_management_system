@@ -42,19 +42,25 @@
     <!-- END: Custom CSS-->
 
 </head>
-<body>
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
 
+
+    <!-- BEGIN: Header-->
+    @include('layouts.base')
+    <!-- END: Header-->
+
+
+    <!-- BEGIN: Content-->
     @yield('body')
+    <!-- END: Content-->
 
-
-
-    <!-- BEGIN: Footer-->
+    <!-- END: Content-->
     <footer class="footer footer-static footer-light">
         <p class="clearfix mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ml-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-right d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
-
     <!-- END: Footer-->
+
 
     <!-- BEGIN: Custom JS-->
     <script src="{{asset('custom-asset/js/scripts.js')}}"></script>
@@ -72,12 +78,7 @@
     <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
     <script src="{{asset('app-assets/js/core/app.js')}}"></script>
     <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
-    <!-- END: Page JS-->
-
-
+    @yield('script')
 
     <script>
         $(window).on('load', function() {
@@ -90,3 +91,4 @@
         })
     </script>
 </body>
+</html>

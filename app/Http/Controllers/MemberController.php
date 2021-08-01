@@ -15,6 +15,7 @@ class MemberController extends Controller
     }
     //controller for adding members using ajax
         public function addMember(Request $request){
+            
 
         $member = new members();
         $member->name = $request['name'];

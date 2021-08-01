@@ -1,4 +1,4 @@
-     function addMember() {
+function addMember() {
             //console.log($('#name').val() + ' ' + $('#email').val() + ' ' + $('#phone').val());
         $.ajax({
             type: 'POST',

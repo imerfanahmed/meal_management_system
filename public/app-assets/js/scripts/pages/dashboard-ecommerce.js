@@ -58,17 +58,7 @@ $(window).on('load', function () {
   var isRtl = $('html').attr('data-textdirection') === 'rtl';
 
   // On load Toast
-  setTimeout(function () {
-    toastr['success'](
-      'You have successfully logged in.Now you can start to explore!',
-      'Login Successful',
-      {
-        closeButton: true,
-        tapToDismiss: false,
-        rtl: isRtl
-      }
-    );
-  }, 2000);
+
 
   //------------ Statistics Bar Chart ------------
   //----------------------------------------------
