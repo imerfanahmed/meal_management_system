@@ -40,6 +40,9 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('custom-asset/css/style.css')}}">
     <!-- END: Custom CSS-->
+    <!-- BEGIN: Fontawesome-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- END: Fontawesome-->
 
 </head>
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
@@ -62,9 +65,7 @@
     <!-- END: Footer-->
 
 
-    <!-- BEGIN: Custom JS-->
-    <script src="{{asset('custom-asset/js/scripts.js')}}"></script>
-    <!-- END: Custom JS-->
+
     <!-- BEGIN: Vendor JS-->
     <script src="{{asset('app-assets/vendors/js/vendors.min.js')}}"></script>
     <!-- BEGIN Vendor JS-->
@@ -78,6 +79,9 @@
     <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
     <script src="{{asset('app-assets/js/core/app.js')}}"></script>
     <!-- END: Theme JS-->
+        <!-- BEGIN: Custom JS-->
+        <script src="{{asset('custom-asset/js/scripts.js')}}"></script>
+        <!-- END: Custom JS-->
     @yield('script')
 
     <script>

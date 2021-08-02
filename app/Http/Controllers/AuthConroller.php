@@ -16,11 +16,13 @@ class AuthConroller extends Controller
     }
     //create login controller
     public function login_post(Request $request){
-
-        //login user
-       // dd($request->all());
+        $request->validate([
+            'email' => 'required|email|min:8|max:50',
+            'password' => 'required|min:8|max:50'
+        ]);
+        $remember_me = $request->has('remember-me') ? true : false;
         $credentials = $request->only('email', 'password');
-        if(Auth::attempt($credentials)){
+        if(Auth::attempt($credentials,$remember_me)){
             return redirect()->intended('/');
         }
         return redirect()->back()->withInput()->withErrors(['error' => 'Email or password is incorrect']);

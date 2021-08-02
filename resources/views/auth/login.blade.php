@@ -87,7 +87,8 @@
 
                                 <h4 class="card-title mb-1">Welcome to Meal Management System 👋</h4>
                                 {{-- <p class="card-text mb-2">Please sign-in to your account and start the adventure</p> --}}
-                                    @error('error')
+                                
+                                @error('error')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 <form class="auth-login-form mt-2" action="{{url('login')}}" method="POST">
@@ -114,7 +115,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="remember-me" tabindex="3" />
+                                            <input class="custom-control-input" type="checkbox" id="remember-me" name="remember-me" tabindex="3" />
                                             <label class="custom-control-label" for="remember-me"> Remember Me </label>
                                         </div>
                                     </div>

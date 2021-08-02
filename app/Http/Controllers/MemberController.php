@@ -11,11 +11,11 @@ class MemberController extends Controller
     public function index()
     {
         $members = members::all();
-        return view('members', compact('members'));
+        return view('new-member', compact('members'));
     }
     //controller for adding members using ajax
         public function addMember(Request $request){
-            
+
 
         $member = new members();
         $member->name = $request['name'];

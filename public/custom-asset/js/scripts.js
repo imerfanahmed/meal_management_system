@@ -1,3 +1,14 @@
+console.log('Hello World From Custom Script');
+//Function to fire a toast notification
+        function toastNotification(message,type,) {
+            toastr[type](
+                message,
+                {
+                  closeButton: true,
+                  tapToDismiss: false,
+                }
+              );
+            }
 function addMember() {
             //console.log($('#name').val() + ' ' + $('#email').val() + ' ' + $('#phone').val());
         $.ajax({
@@ -21,6 +32,7 @@ function addMember() {
                 $('#name').val('');
                 $('#email').val('');
                 $('#phone').val('');
+                toastNotification(response['data']['name'] + ' added successfully', 'success');
             }
             else {
                 alert('Error: ' + response.error);
