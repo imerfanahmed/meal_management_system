@@ -9,8 +9,12 @@ class members extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id',
         'name',
         'email',
         'phone_number',
+        'room_number',
+        'deposit'
+
     ];
 }

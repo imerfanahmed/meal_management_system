@@ -18,29 +18,32 @@ function addMember() {
               },
             url: 'add_members',
             data: {
+            'id': $('#id').val(),
             'name': $('#name').val(),
             'email': $('#email').val(),
-            'phone': $('#phone').val()
+            'phone': $('#phone').val(),
+            'room_number': $('#room_number').val(),
+            'deposit': $('#deposit').val(),
             },
 
             success: function (response) {
-            console.log(response);
+            //console.log(response);
             //console.log(response['data']['name']);
-            if (response['status'] === 'ok') {
-                $("#addMmember").modal('hide');
-                $('#members-table').append('<tr><td>'+ response['data']['id']+ '</td><td>' + response['data']['name'] + '</td><td>' + response['data']['email'] + '</td><td>' + response['data']['phone_number'] + '</td></tr>');
-                $('#name').val('');
-                $('#email').val('');
-                $('#phone').val('');
-                toastNotification(response['data']['name'] + ' added successfully', 'success');
-            }
-            else {
-                alert('Error: ' + response.error);
-            }
+                if (response['status'] === 'ok') {
+                    $("#addMmember").modal('hide');
+                    $('#members-table').append('<tr><td>'+ response['data']['id']+ '</td><td>' + response['data']['name'] + '</td><td>' + response['data']['email'] + '</td><td>' + response['data']['phone_number'] +'</td><td>'+ response['data']['room_number'] + '</td><td>'+ response['data']['deposit'] +'</td></tr>');
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#phone').val('');
+                    $('#room_number').val('');
+                    $('#deposit').val('');
+                    toastNotification(response['data']['name'] + ' added successfully', 'success');
+                    }
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-            console.log(errorThrown);
-            alert('Please Fill Up the Form Properly');
+            error: function (response) {
+                toastNotification('Please resolve the errors', 'error');
+                $('#idError').text(response.responseJSON.errors.id);
+                $('#emailError').text(response.responseJSON.errors.email);
             }
         });
         }

@@ -90,10 +90,12 @@
                                                 aria-label="Actions">Actions</th>
                                         </tr> --}}
                                         <tr>
-                                            <th>id</th>
+                                            <th>Id</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
+                                            <th>Room Number</th>
+                                            <th>Balance</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -103,6 +105,8 @@
                                             <td>{{$member->name}}</td>
                                             <td>{{$member->email}}</td>
                                             <td>{{$member->phone_number}}</td>
+                                            <td>{{$member->room_number}}</td>
+                                            <td>{{$member->deposit}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -114,7 +118,7 @@
                 <!-- Modal to add new record -->
                 <div class="modal modal-slide-in fade" id="addMmember" style="display: none;" aria-hidden="true">
                     <div class="modal-dialog sidebar-sm">
-                        <form class="add-new-record modal-content pt-0">
+                        <form class="add-new-record modal-content pt-0" >
                             @csrf
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                             <div class="modal-header mb-1">
@@ -123,22 +127,41 @@
                             <div class="modal-body flex-grow-1">
 
                                 <div class="form-group">
-                                    <label for="exampleInput">Name</label>
-                                    <input type="text" required class="form-control" id="name"
-                                        placeholder="Erfan Ahmed Siam">
+                                    <label for="exampleInput">Unique Indetification Number</label>
+                                    <input type="number" required class="form-control" id="id" placeholder="193044">
+                                    <span class="text-danger" id="idError"></span>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="exampleInput">Phone Number</label>
-                                    <input type="phone" required class="form-control" id="phone"
-                                        placeholder="01420420420">
+                                    <label for="exampleInput">Name</label>
+                                    <input type="text" required class="form-control" id="name" placeholder="Erfan Ahmed Siam">
                                 </div>
+
                                 <div class="form-group">
                                     <label for="exampleInput">Email Address</label>
                                     <input type="email" class="form-control" id="email" placeholder="erfan@example.com">
+                                    <span class="text-danger" id="emailError"></span>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="exampleInput">Phone Number</label>
+                                    <input type="phone" required class="form-control" id="phone" placeholder="01420420420">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInput">Room Number</label>
+                                    <input type="number" required class="form-control" id="room_number" placeholder="420">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInput">Deposit</label>
+                                    <input type="number" required class="form-control" id="deposit" placeholder="1500">
+                                </div>
+
+
+
                                 <button type="button" onclick="addMember()"
-                                    class="btn btn-primary data-submit mr-1 waves-effect waves-float waves-light">Submit</button>
+                                    class="btn btn-primary  mr-1 waves-effect waves-float waves-light">Submit</button>
                                 <button type="reset" class="btn btn-outline-secondary waves-effect"
                                     data-dismiss="modal">Cancel</button>
                             </div>
