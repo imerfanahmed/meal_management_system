@@ -59,7 +59,7 @@
                         <div class="card mb-0">
                             <div class="card-body">
                                 <a href="javascript:void(0);" class="brand-logo">
-                                    <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
+                                    {{-- <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
                                         <defs>
                                             <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
                                                 <stop stop-color="#000000" offset="0%"></stop>
@@ -81,13 +81,13 @@
                                                 </g>
                                             </g>
                                         </g>
-                                    </svg>
-                                    <h2 class="brand-text text-primary ml-1">Vuexy</h2>
+                                    </svg> --}}
+                                    <h2 class="brand-text text-primary ml-1">Meal Management System</h2>
                                 </a>
 
-                                <h4 class="card-title mb-1">Welcome to Meal Management System 👋</h4>
+                                {{-- <h4 class="card-title mb-1">Welcome to Meal Management System 👋</h4> --}}
                                 {{-- <p class="card-text mb-2">Please sign-in to your account and start the adventure</p> --}}
-                                
+
                                 @error('error')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -101,9 +101,31 @@
                                     <div class="form-group">
                                         <div class="d-flex justify-content-between">
                                             <label for="login-password">Password</label>
-                                            <a href="page-auth-forgot-password-v1.html">
+                                            <a data-toggle="modal" data-target="#addMmember">
                                                 <small>Forgot Password?</small>
                                             </a>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="addMmember" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Forgot Password??</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h2>Relax,Try to meditate! Yes, You can. I know!</h2>
+                                                            <img class="img-fluid"src="{{asset('custom-asset/img/forgot_password.jpg')}}" alt="">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            {{-- <button type="button" class="btn btn-primary">Save</button> --}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password" class="form-control form-control-merge" id="login-password" name="password" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="login-password" />
