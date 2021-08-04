@@ -82,6 +82,11 @@
     <script src="{{asset('app-assets/js/core/app-menu.js')}}"></script>
     <script src="{{asset('app-assets/js/core/app.js')}}"></script>
     <!-- END: Theme JS-->
+
+    {{-- sweetalert --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+
         <!-- BEGIN: Custom JS-->
         <script src="{{asset('custom-asset/js/scripts.js')}}"></script>
         <!-- END: Custom JS-->

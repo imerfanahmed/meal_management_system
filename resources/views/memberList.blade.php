@@ -96,29 +96,40 @@
                                             <th>Phone</th>
                                             <th>Room Number</th>
                                             <th>Balance</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($members as $member)
-                                        <tr>
+                                        <tr id="member-{{ $member->id }}">
                                             <td>{{$member->id}}</td>
                                             <td>{{$member->name}}</td>
                                             <td>{{$member->email}}</td>
                                             <td>{{$member->phone_number}}</td>
                                             <td>{{$member->room_number}}</td>
                                             <td>{{$member->deposit}}</td>
+                                            <td>
+                                                <button onclick="editMember_modal({{$member->id}})" class="btn btn-outline-warning btn-sm"><i
+                                                        class="fas fa-edit"></i> Edit</button>
+                                                <button onclick="deleteMember({{$member->id}})"
+                                                    class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i>
+                                                    Delete</button>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $members->links() }}
+
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <!-- Modal to add new record -->
                 <div class="modal modal-slide-in fade" id="addMmember" style="display: none;" aria-hidden="true">
                     <div class="modal-dialog sidebar-sm">
-                        <form class="add-new-record modal-content pt-0" >
+                        <form class="add-new-record modal-content pt-0">
                             @csrf
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                             <div class="modal-header mb-1">
@@ -134,7 +145,8 @@
 
                                 <div class="form-group">
                                     <label for="exampleInput">Name</label>
-                                    <input type="text" required class="form-control" id="name" placeholder="Erfan Ahmed Siam">
+                                    <input type="text" required class="form-control" id="name"
+                                        placeholder="Erfan Ahmed Siam">
                                 </div>
 
                                 <div class="form-group">
@@ -145,12 +157,14 @@
 
                                 <div class="form-group">
                                     <label for="exampleInput">Phone Number</label>
-                                    <input type="phone" required class="form-control" id="phone" placeholder="01420420420">
+                                    <input type="phone" required class="form-control" id="phone"
+                                        placeholder="01420420420">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInput">Room Number</label>
-                                    <input type="number" required class="form-control" id="room_number" placeholder="420">
+                                    <input type="number" required class="form-control" id="room_number"
+                                        placeholder="420">
                                 </div>
 
                                 <div class="form-group">

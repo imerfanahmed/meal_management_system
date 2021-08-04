@@ -31,3 +31,6 @@ Route::post('/register',[AuthConroller::class,'register_post'])->middleware('gue
 
 Route::get('members',[MemberController::class,'index'])->name('members')->middleware('auth');
 Route::post('add_members',[MemberController::class,'addMember']);
+Route::get('delete_members',[MemberController::class,'deleteMember']);
+Route::get('get_member',[MemberController::class,'getMember']);
+Route::post('update_member',[MemberController::class,'updateMember']);
