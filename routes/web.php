@@ -34,3 +34,6 @@ Route::post('add_members',[MemberController::class,'addMember']);
 Route::get('delete_members',[MemberController::class,'deleteMember']);
 Route::get('get_member',[MemberController::class,'getMember']);
 Route::post('update_member',[MemberController::class,'updateMember']);
+
+Route::get('get_balance',[MemberController::class,'getTotalBalance']);
+

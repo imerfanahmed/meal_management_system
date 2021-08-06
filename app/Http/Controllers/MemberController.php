@@ -12,7 +12,7 @@ class MemberController extends Controller
     public function index()
     {
         //$members = members::all()->paginate(10);
-        return view('memberList', ['members' => DB::table('members')->Paginate(20)]);
+        return view('memberList', ['members' => DB::table('members')->Paginate(1)]);
     }
     //controller for adding members using ajax
         public function addMember(Request $request){
@@ -36,6 +36,12 @@ class MemberController extends Controller
         $member->room_number = $info['room_number'];
         $member->deposit = $info['deposit'];
         $member->save();
+
+        // $deposit=members::all();
+        // $total=0;
+        // foreach($deposit as $m){
+        //     $total+=$m->deposit;
+        // }
         return response()->json(['status' => 'ok', 'message' => 'Member added successfully', 'data' => $member],200);
        }
 
@@ -64,25 +70,25 @@ class MemberController extends Controller
 
     //update a member
     public function updateMember(Request $request){
-        $info = $request->validate([
-                'name' => 'required|max:50',
-                'phone' => 'required|max:20',
-                'room_number' => 'max:10',
-                'deposit' => 'max:10',
-            ]);
-        if($info){
+        //dd($request->all());
+        $info=$request->all();
             $member = members::find($info['id']);
-            if($member){
-                $member->name = $info['name'];
-                $member->phone_number = $info['phone'];
-                $member->room_number = $info['room_number'];
-                $member->deposit = $info['deposit'];
-                $member->save();
-                return response()->json(['status' => 'ok', 'message' => 'Member updated successfully', 'data' => $member],200);
-            }
-            return response()->json(['status' => 'error', 'message' => 'Member not updated'],400);
-        }
-        return response()->json(['status' => 'error', 'message' => 'Member not updated'],400);
+            
+            $member->name = $info['name'];
+            $member->phone_number = $info['phone'];
+            $member->room_number = $info['room_number'];
+            $member->save();
+            return response()->json(['status' => 'ok', 'message' => 'Member updated successfully', 'data' => $member],200);
+
     }
+
+    // public function getTotalBalance(){
+    //     $member=members::all();
+    //     $total=0;
+    //     foreach($member as $m){
+    //         $total+=$m->deposit;
+    //     }
+    //     return $total;
+    // }
 
 }

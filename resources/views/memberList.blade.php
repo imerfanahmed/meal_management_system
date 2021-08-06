@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="dt-action-buttons text-right">
                                         <div class="dt-buttons d-inline-flex">
-                                            <button class="btn btn-primary" tabindex="0" type="button"
+                                            <button onclick="addNew()" class="btn btn-primary" tabindex="0" type="button"
                                                 data-toggle="modal" data-target="#addMmember"> <i
                                                     class="fas fa-plus"></i> Add New Record</button>
                                         </div>
@@ -119,8 +119,10 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {{ $members->links() }}
-
+                                 {{ $members->links() }}
+                                 {{-- <div>Showing {{($members->currentpage()-1)*$members->perpage()+1}} to {{$members->currentpage()*$members->perpage()}}
+                                    of  {{$members->total()}} entries
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -174,9 +176,9 @@
 
 
 
-                                <button type="button" onclick="addMember()"
+                                <button id="submit" type="button" onclick="addMember()"
                                     class="btn btn-primary  mr-1 waves-effect waves-float waves-light">Submit</button>
-                                <button type="reset" class="btn btn-outline-secondary waves-effect"
+                                <button id="cancel" type="reset" class="btn btn-outline-secondary waves-effect"
                                     data-dismiss="modal">Cancel</button>
                             </div>
                         </form>
