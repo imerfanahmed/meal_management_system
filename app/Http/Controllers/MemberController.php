@@ -12,7 +12,7 @@ class MemberController extends Controller
     public function index()
     {
         //$members = members::all()->paginate(10);
-        return view('memberList', ['members' => DB::table('members')->Paginate(1)]);
+        return view('memberList', ['members' => DB::table('members')->Paginate(20)]);
     }
     //controller for adding members using ajax
         public function addMember(Request $request){
@@ -73,7 +73,7 @@ class MemberController extends Controller
         //dd($request->all());
         $info=$request->all();
             $member = members::find($info['id']);
-            
+
             $member->name = $info['name'];
             $member->phone_number = $info['phone'];
             $member->room_number = $info['room_number'];

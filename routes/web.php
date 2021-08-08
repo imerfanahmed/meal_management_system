@@ -29,11 +29,15 @@ Route::get('/logout',[AuthConroller::class,'logout'])->name('logout')->middlewar
 Route::get('/register',[AuthConroller::class,'register'])->name('register')->middleware('guest');
 Route::post('/register',[AuthConroller::class,'register_post'])->middleware('guest');
 
+
+//All About Member Crud
 Route::get('members',[MemberController::class,'index'])->name('members')->middleware('auth');
 Route::post('add_members',[MemberController::class,'addMember']);
 Route::get('delete_members',[MemberController::class,'deleteMember']);
 Route::get('get_member',[MemberController::class,'getMember']);
 Route::post('update_member',[MemberController::class,'updateMember']);
 
-Route::get('get_balance',[MemberController::class,'getTotalBalance']);
+// Route::get('get_balance',[MemberController::class,'getTotalBalance']);
+
+Route::view('add_meal', 'addMeal');
 
