@@ -9,7 +9,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - Vuexy - Bootstrap HTML admin template</title>
+    <title>{{env('APP_NAME', ' FreonDev Meal Management System').' - Register'}}</title>
     <link rel="apple-touch-icon" href="{{asset('app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('')}}../../../app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -58,7 +58,7 @@
                         <!-- Register v1 -->
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="javascript:void(0);" class="brand-logo">
+                                {{-- <a href="javascript:void(0);" class="brand-logo">
                                     <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="28">
                                         <defs>
                                             <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
@@ -82,9 +82,10 @@
                                             </g>
                                         </g>
                                     </svg>
-                                    <h2 class="brand-text text-primary ml-1">Vuexy</h2>
-                                </a>
 
+                                </a> --}}
+                                <h1 class="brand-text text-primary ml-1 text-center">{{env('APP_NAME', ' FreonDev')}}</h1>
+                                <h5 class="text-primary ml-1 text-center">Meal Management System</h5>
                                 {{-- <h4 class="card-title mb-1">Adventure starts here 🚀</h4> --}}
                                 @if ( $errors->error->any())
                                     @foreach( $errors->error->all() as $message )

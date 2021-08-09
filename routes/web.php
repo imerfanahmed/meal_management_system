@@ -37,9 +37,8 @@ Route::get('delete_members',[MemberController::class,'deleteMember']);
 Route::get('get_member',[MemberController::class,'getMember']);
 Route::post('update_member',[MemberController::class,'updateMember']);
 
-// Route::get('get_balance',[MemberController::class,'getTotalBalance']);
-//this is comment in order to change something in this file so that master branch got change and h
-//heroku can deploy automatically.
 
-Route::view('add_meal', 'addMeal');
+Route::view('bazar_cost','addBazar');
+Route::view('daily_meal','dailyMeal');
+Route::view('configuration','configuration');
 

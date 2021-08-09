@@ -140,7 +140,7 @@
                             <div class="modal-body flex-grow-1">
 
                                 <div class="form-group">
-                                    <label for="exampleInput">Unique Indetification Number</label>
+                                    <label for="exampleInput">Unique ID Number</label>
                                     <input type="number" required class="form-control" id="id" placeholder="193044">
                                     <span class="text-danger" id="idError"></span>
                                 </div>
