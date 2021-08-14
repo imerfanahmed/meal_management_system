@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//Welcome TO this new branch!
+//I will be creating multi Auth For this project and then will merge it to master
