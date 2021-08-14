@@ -90,6 +90,7 @@
                                                 aria-label="Actions">Actions</th>
                                         </tr> --}}
                                         <tr>
+                                            <th>Serial</th>
                                             <th>Id</th>
                                             <th>Name</th>
                                             <th>Email</th>
@@ -102,6 +103,8 @@
                                     <tbody>
                                         @foreach ($members as $member)
                                         <tr id="member-{{ $member->id }}">
+
+                                            <td>{{$loop->iteration}}</td>
                                             <td>{{$member->id}}</td>
                                             <td>{{$member->name}}</td>
                                             <td>{{$member->email}}</td>
