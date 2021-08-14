@@ -26,12 +26,12 @@
 
                             @foreach ($period as $date)
                                 <tr>
-                                    <td>{{ $date->format('Y-m-d') }}</td>
+                                    <td>{{ $date->format('d-M') }}</td>
                                     <td>{{ $date->format('l') }}</td>
                                     <td>
                                         <div class="custom-control custom-switch custom-switch-success">
-                                            <input type="checkbox" class="custom-control-input" id="customSwitch111" checked />
-                                            <label class="custom-control-label" for="customSwitch111">
+                                            <input type="checkbox" class="custom-control-input" id="{{ $date->format('Y-m-d') }}" checked />
+                                            <label class="custom-control-label" for="{{ $date->format('Y-m-d') }}">
                                                 <span class="switch-icon-left"><i data-feather="check"></i></span>
                                                 <span class="switch-icon-right"><i data-feather="x"></i></span>
                                             </label>
