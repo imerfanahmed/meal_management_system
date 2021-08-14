@@ -7,6 +7,8 @@
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12">
+                <h1>Current Month : {{\Carbon\Carbon::now()->format('F')}}</h1>
+                <h1>Number of Meal this Month : <span id="mealNumber"></span> </h1>
                 <div class="card text-left">
                   <div class="card-body">
                     <table class="table">
@@ -30,7 +32,7 @@
                                     <td>{{ $date->format('l') }}</td>
                                     <td>
                                         <div class="custom-control custom-switch custom-switch-success">
-                                            <input type="checkbox" class="custom-control-input" id="{{ $date->format('Y-m-d') }}" checked />
+                                            <input type="checkbox" class="custom-control-input" id="{{ $date->format('Y-m-d') }}" checked onclick="numberOfChecked()"/>
                                             <label class="custom-control-label" for="{{ $date->format('Y-m-d') }}">
                                                 <span class="switch-icon-left"><i data-feather="check"></i></span>
                                                 <span class="switch-icon-right"><i data-feather="x"></i></span>
@@ -59,4 +61,8 @@
         </div>
 
     </div>
+@endsection
+
+@section('script')
+<script src="{{asset('custom-asset/js/meal.js')}}"></script>
 @endsection
