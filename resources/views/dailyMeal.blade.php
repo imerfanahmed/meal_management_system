@@ -7,8 +7,8 @@
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12">
-                <h1>Current Month : {{\Carbon\Carbon::now()->format('F')}}</h1>
-                <h1>Number of Meal this Month : <span id="mealNumber"></span> </h1>
+                <h1>Current Month : {{Carbon::now()->format('F')}}</h1>
+                <h1>Number of Meal this Month : <span id="meal Number"></span> </h1>
                 <div class="card text-left">
                   <div class="card-body">
                     <table class="table">
