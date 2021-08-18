@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\members;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class MemberController extends Controller
 {
@@ -12,30 +14,34 @@ class MemberController extends Controller
     public function index()
     {
         //$members = members::all()->paginate(10);
-        return view('memberList', ['members' => DB::table('members')->Paginate(20)]);
+        return view('memberList', ['members' => User::where('isManager','!=','1')->Paginate(10)]);
     }
     //controller for adding members using ajax
         public function addMember(Request $request){
             //dd($request->all());
 
           $info = $request->validate([
-                'id' => 'unique:members|max:8',
+                'id' => 'unique:users|max:8',
                 'name' => 'required|max:50',
-                'email' => 'required|max:50|unique:members',
+                'email' => 'required|max:50|unique:users',
                 'phone' => 'required|max:20',
                 'room_number' => 'max:10',
                 'deposit' => 'max:10',
             ]);
 
+       $password = Str::random(10);
+
        if($info){
-        $member = new members();
+        $member = new User();
         $member->id = $info['id'];
         $member->name = $info['name'];
         $member->email = $info['email'];
+        $member->password = Hash::make($password);
         $member->phone_number = $info['phone'];
         $member->room_number = $info['room_number'];
         $member->deposit = $info['deposit'];
         $member->save();
+        Mail::to($info['email'])->send(new \App\Mail\newMember($member->name,$password));
 
         // $deposit=members::all();
         // $total=0;
@@ -50,7 +56,7 @@ class MemberController extends Controller
 
     //deleting a member
         public function deleteMember(Request $request){
-        $member = members::find($request->id);
+        $member = User::find($request->id);
         if($member){
             $member->delete();
             return response()->json(['status' => 'ok', 'message' => 'Member deleted successfully', 'data' => $member],200);
@@ -60,7 +66,7 @@ class MemberController extends Controller
 
     //get a single member details
         public function getMember(Request $request){
-        $member = members::find($request->id);
+        $member = User::find($request->id);
         if($member){
             return response()->json(['status' => 'ok', 'message' => 'Member details fetched successfully', 'data' => $member],200);
         }
@@ -72,7 +78,7 @@ class MemberController extends Controller
     public function updateMember(Request $request){
         //dd($request->all());
         $info=$request->all();
-            $member = members::find($info['id']);
+            $member = User::find($info['id']);
 
             $member->name = $info['name'];
             $member->phone_number = $info['phone'];
@@ -83,7 +89,7 @@ class MemberController extends Controller
     }
 
     // public function getTotalBalance(){
-    //     $member=members::all();
+    //     $member=User::all();
     //     $total=0;
     //     foreach($member as $m){
     //         $total+=$m->deposit;
@@ -92,6 +98,6 @@ class MemberController extends Controller
     // }
 
     //member login
-    
+
 
 }

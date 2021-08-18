@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthConroller;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +17,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard')->with('title', 'Dashboard');
-})->middleware('auth');
+// Route::get('/', function () {
+//     return view('dashboard')->with('title', 'Dashboard');
+// })->middleware('auth');
+
+Route::get('/',[HomeController::class,'index'])->middleware('auth');
 
 
 Route::get('/login',[AuthConroller::class,'login'])->name('login')->middleware('guest');

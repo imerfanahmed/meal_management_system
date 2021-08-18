@@ -69,6 +69,7 @@ function addMember() {
             }
         },
         error: function (response) {
+            console.log(response);
             toastNotification('Please resolve the errors', 'error');
             $('#idError').text(response.responseJSON.errors.id);
             $('#emailError').text(response.responseJSON.errors.email);
