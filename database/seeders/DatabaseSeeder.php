@@ -15,7 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        //creating Members
         \App\Models\User::factory(50)->create();
+
+
         //creating Manager User
         $manager = new User();
         $manager->name = 'Erfan Ahmed Siam';
@@ -23,7 +27,5 @@ class DatabaseSeeder extends Seeder
         $manager->password = Hash::make('12345678');
         $manager->isManager = '1';
         $manager->save();
-
-
     }
 }

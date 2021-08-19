@@ -42,7 +42,9 @@
     <!-- END: Custom CSS-->
     <!-- BEGIN: Fontawesome-->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- END: Fontawesome-->
+    @yield('css')
 
 </head>
 <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">

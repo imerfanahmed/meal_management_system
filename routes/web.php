@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\AuthConroller;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\mealController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,6 @@ Route::post('update_member',[MemberController::class,'updateMember']);
 
 
 Route::view('bazar_cost','addBazar');
-Route::view('daily_meal','dailyMeal');
+Route::get('daily_meal',[mealController::class,'index']);
 Route::view('configuration','configuration');
 
