@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class mealController extends Controller
 {
     public function index(){
-        return view('dailyMeal',['members'=>User::all()]);
+        $users=User::with('meals')->get();
+        return view('dailyMeal')->with('members',$users);
     }
 }

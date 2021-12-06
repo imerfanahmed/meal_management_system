@@ -34,20 +34,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @php
-                            $meal=$members[0]->meals->toArray();
-                                // $from = '2021-08-01';
-                                // $to = '2021-08-31';
-                                // $period = \Carbon\CarbonPeriod::create($from, '1 day', $to);
-                            @endphp --}}
-                            {{dd($members)}}
                             @foreach ($members as $member)
                                 <tr>
+                                    {{-- @dump($member->meals[0]) --}}
                                     <td>{{$member->name}}</td>
 
 
-                                    <td>{{$member}}</td>
-                                    {{-- <td>{{ $date->format('l') }}</td> --}}
+                                    <td>{{$member->meals->first()->meal_status ?? "Nothing"}}</td>
                                     <td>
                                         <div class="custom-control custom-switch custom-switch-success">
                                             <input type="checkbox" class="custom-control-input"  checked onclick="numberOfChecked()"/>
@@ -65,16 +58,6 @@
                   </div>
                 </div>
             </div>
-            {{-- <div class="col-md-6">
-                hello world
-            </div> --}}
-            {{-- {{ \Carbon\Carbon::now()->daysInMonth }} --}}
-            {{-- @php
-               $now = Carbon::now();
-            echo $now->year;
-            echo $now->month;
-            echo $now->weekOfYear;
-            @endphp --}}
 
         </div>
 
